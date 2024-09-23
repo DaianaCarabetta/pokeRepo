@@ -14,7 +14,7 @@ const Cards = () => {
   }, []);
 
   return (
-    <div>
+    <div className="p-8 flex flex-row flex-wrap   place-content-center">
       {pokemons && pokemons.map((p) => <Card pokemon={p} key={p.name} />)}
     </div>
   );

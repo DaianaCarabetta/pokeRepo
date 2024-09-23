@@ -10,10 +10,8 @@ const Detail = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    debugger;
     getPokemon(name)
       .then((data) => {
-        debugger;
         if (data.name) {
           setPokemon(data);
         } else {
@@ -34,17 +32,25 @@ const Detail = () => {
     return <div>Loading...</div>;
   }
 
-  debugger;
-
   return (
-    <div>
-      <div>
+    <div className="flex flex-col h-screen">
+      <div className="font-extrabold text-center text-white text-3xl uppercase m-3">
         <h1>{pokemon.name}</h1>
       </div>
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-      <p>Ability:{pokemon.abilities.ability}</p>
-      <p>Weight:{pokemon.weight}</p>
-      <p>Type:{pokemon.types[0].type.name}</p>
+      <div className="flex flex-row justify-center items-center ">
+        <div className="m-5 rounded-lg shadow-lg shadow-slate-300">
+          <img
+            className="max-h-80 rounded-lg border-4 "
+            src={`https://img.pokemondb.net/artwork/large/${pokemon.name}.jpg`}
+            alt={pokemon.name}
+          />
+        </div>
+        <div className="flex-col text-white items-center text-2xl m-5">
+          <p>Ability: {pokemon.abilities.ability}</p>
+          <p>Weight: {pokemon.weight}</p>
+          <p>Type: {pokemon.types[0].type.name}</p>
+        </div>
+      </div>
     </div>
   );
 };
